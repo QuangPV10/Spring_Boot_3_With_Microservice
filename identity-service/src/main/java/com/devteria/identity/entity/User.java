@@ -8,24 +8,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+@Entity
+@Table(name = "\"user\"")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
+    @Column(name = "username", unique = true)
     String username;
     String password;
     String firstName;
-    LocalDate dob;
     String lastName;
-
+    LocalDate dob;
     @ManyToMany
     Set<Role> roles;
 }
