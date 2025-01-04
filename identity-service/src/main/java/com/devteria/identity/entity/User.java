@@ -1,12 +1,10 @@
 package com.devteria.identity.entity;
 
-import java.time.LocalDate;
-import java.util.Set;
-
 import jakarta.persistence.*;
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "\"user\"")
@@ -24,9 +22,7 @@ public class User {
     @Column(name = "username", unique = true)
     String username;
     String password;
-    String firstName;
-    String lastName;
-    LocalDate dob;
+
     @ManyToMany
     Set<Role> roles;
 }
